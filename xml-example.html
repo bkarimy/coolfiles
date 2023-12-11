@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>XML Example</title>
+</head>
+<body>
+    <h1>Animals List from XML</h1>
+    <div id="animalList"></div>
+
+    <script>
+        function loadXMLDoc() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    displayAnimals(this);
+                }
+            };
+            xhttp.open("GET", "data.xml", true);
+            xhttp.send();
+        }
+
+        function displayAnimals(xml) {
+            var xmlDoc = xml.responseXML;
+            var txt = "";
+            var x = xmlDoc.getElementsByTagName("animal");
+            for (var i = 0; i < x.length; i++) {
+                txt += "Name: " +
+                x[i].getElementsByTagName("name")[0].childNodes[0].nodeValue +
+                "<br>Habitat: " +
+                x[i].getElementsByTagName("habitat")[0].childNodes[0].nodeValue +
+                "<br><br>";
+            }
+            document.getElementById("animalList").innerHTML = txt;
+        }
+
+        loadXMLDoc(); // Call the function on load
+    </script>
+</body>
+</html>
