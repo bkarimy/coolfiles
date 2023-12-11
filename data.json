@@ -1,0 +1,12 @@
+{
+    "animals": [
+        {
+            "name": "Lion",
+            "habitat": "Savanna"
+        },
+        {
+            "name": "Tiger",
+            "habitat": "Jungle"
+        }
+    ]
+}
