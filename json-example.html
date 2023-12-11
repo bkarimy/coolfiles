@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JSON Example</title>
+</head>
+<body>
+    <h1>Animals List from JSON</h1>
+    <div id="animalList"></div>
+
+    <script>
+        function loadJSON() {
+            fetch('data.json')
+                .then(response => response.json())
+                .then(data => displayAnimals(data));
+        }
+
+        function displayAnimals(data) {
+            var animals = data.animals;
+            var txt = "";
+            for (var i = 0; i < animals.length; i++) {
+                txt += "Name: " + animals[i].name + "<br>Habitat: " + animals[i].habitat + "<br><br>";
+            }
+            document.getElementById("animalList").innerHTML = txt;
+        }
+
+        loadJSON(); // Call the function on load
+    </script>
+</body>
+</html>
